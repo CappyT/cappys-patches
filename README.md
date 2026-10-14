@@ -6,12 +6,21 @@ Unofficial [Morphe](https://github.com/MorpheApp) patch bundle for the **MuseSco
 <!-- 🩹 Patches list -->
 
 <!-- PATCHES_START EXPANDED -->
+> **[v1.0.0](https://github.com/CappyT/cappys-patches/releases/tag/v1.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;1 patches total
+<details open>
+<summary>📦 MuseScore: Music Chords & Tabs&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
 
-<!-- Do not modify this section by hand. The patch list is generated when release.yml creates a new release. -->
+**🎯 Supported versions:**
 
-#### A list of your patches will automatically be shown here after the first release is created.
+| 2.14.48 |
+| :---: |
 
-&nbsp;
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Unlock Pro](#unlock-pro) | Unlocks MuseScore Pro / Off-Scores entitlements locally by patching the React Native Hermes bundle (paywalls, offline scores gating, feature flags). |  |
+
+</details>
 
 <!-- PATCHES_END -->
 
