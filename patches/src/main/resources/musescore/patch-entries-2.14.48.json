@@ -1,0 +1,65 @@
+{
+ "meta": {
+  "package": "com.musescore.playerlite",
+  "version": "2.14.48",
+  "versionCode": 2701674,
+  "bundle_sha256": "25061ad4d6fd4d260eb62638d73124424b63494719236a1622986317e88c3bcd",
+  "generator": "hermes_patch_gen.py"
+ },
+ "regions": [
+  {
+   "name": "elseBranch",
+   "offset": 5802040,
+   "expected": "0751656b290173000000000000000000000000",
+   "replace": "0751656b190173000000000000000000000000"
+  },
+  {
+   "name": "rightsGate",
+   "offset": 11765602,
+   "expected": "161617109315b0081644151703ae",
+   "replace": "9515951595159515951595159515"
+  },
+  {
+   "name": "thunkFlag0",
+   "offset": 11765855,
+   "expected": "131a1a13251ab21625161b2810931ab0091b451a280cf1841a25151a",
+   "replace": "95259525952595259525952595259525952595259525952595259525"
+  },
+  {
+   "name": "thunkFlag1",
+   "offset": 11765898,
+   "expected": "131a1a13221ab20d22451a260cf1841a22151a",
+   "replace": "95229522952295229522952295229522102222"
+  },
+  {
+   "name": "thunkFlag2",
+   "offset": 11765932,
+   "expected": "131a1a131c1ab20d1c451a200cf1841a1c151a",
+   "replace": "951c951c951c951c951c951c951c951c101c1c"
+  },
+  {
+   "name": "thunkFlag3",
+   "offset": 11765966,
+   "expected": "131a1a131a1ab20d1a451b1d0cf1841a1a151b",
+   "replace": "951a951a951a951a951a951a951a951a101a1a"
+  },
+  {
+   "name": "thunkFlag4",
+   "offset": 11766000,
+   "expected": "131b1b132a1bb20d2a4518180cf1841a2a1518",
+   "replace": "952a952a952a952a952a952a952a952a102a2a"
+  },
+  {
+   "name": "thunkFlag5",
+   "offset": 11766034,
+   "expected": "131818131f18b2161f161b23109318b0091b4518230cf1841a1f1518",
+   "replace": "951f951f951f951f951f951f951f951f951f951f951f951f951f951f"
+  },
+  {
+   "name": "thunkFlag6",
+   "offset": 11766077,
+   "expected": "131818132718b21627161b19109318b0091b4518190cf1841a271518",
+   "replace": "95279527952795279527952795279527952795279527952795279527"
+  }
+ ]
+}
