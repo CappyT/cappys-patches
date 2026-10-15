@@ -1,3 +1,9 @@
+## [1.1.4](https://github.com/CappyT/cappys-patches/compare/v1.1.3...v1.1.4) (2026-10-15)
+
+### 🐛 Bug Fixes
+
+* block Play Store in-app review flow that nags sideloaded installs ([3960b06](https://github.com/CappyT/cappys-patches/commit/3960b060a8d4b7f9791abe8b3c174c15b9e103f4))
+
 ## [1.1.3](https://github.com/CappyT/cappys-patches/compare/v1.1.2...v1.1.3) (2026-10-15)
 
 ### 🐛 Bug Fixes
