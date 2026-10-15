@@ -1,3 +1,9 @@
+## [1.1.2](https://github.com/CappyT/cappys-patches/compare/v1.1.1...v1.1.2) (2026-10-15)
+
+### 🐛 Bug Fixes
+
+* declare Unlock Pro compatibility with MuseScore instead of showing as universal ([fa2fe5e](https://github.com/CappyT/cappys-patches/commit/fa2fe5e67937268db68ae73d8ccb85a7a666095e))
+
 ## [1.1.1](https://github.com/CappyT/cappys-patches/compare/v1.1.0...v1.1.1) (2026-10-15)
 
 ### 🐛 Bug Fixes

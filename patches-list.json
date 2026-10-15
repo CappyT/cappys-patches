@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "patches": [
     {
       "name": "Disable tracking",
@@ -57,9 +57,27 @@
     {
       "name": "Unlock Pro",
       "description": "Unlocks MuseScore Pro / Off-Scores entitlements by patching the React Native Hermes bundle (paywalls, offline scores gating, feature flags). Also hides the device-compatibility attestation popup shown when opening scores.",
-      "default": false,
+      "default": true,
       "category": null,
-      "compatiblePackages": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.musescore.playerlite",
+          "name": "MuseScore: Music Chords & Tabs",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#240C44",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.14.48",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     }
   ]
