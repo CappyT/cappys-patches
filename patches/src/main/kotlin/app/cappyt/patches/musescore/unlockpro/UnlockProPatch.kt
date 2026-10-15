@@ -43,6 +43,8 @@ val unlockMuseScoreProPatch = resourcePatch(
             "device-compatibility attestation popup shown when opening scores.",
     default = true
 ) {
+    compatibleWith(COMPATIBILITY_MUSESCORE)
+
     execute {
         val file = get(BUNDLE_PATH)
         val data = file.readBytes()
