@@ -6,7 +6,7 @@ Unofficial [Morphe](https://github.com/MorpheApp) patch bundle for the **MuseSco
 <!-- 🩹 Patches list -->
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.1.2](https://github.com/CappyT/cappys-patches/releases/tag/v1.1.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;3 patches total
+> **[v1.1.3](https://github.com/CappyT/cappys-patches/releases/tag/v1.1.3)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;3 patches total
 <details open>
 <summary>📦 MuseScore: Music Chords & Tabs&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
 <br>

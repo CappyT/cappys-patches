@@ -1,3 +1,9 @@
+## [1.1.3](https://github.com/CappyT/cappys-patches/compare/v1.1.2...v1.1.3) (2026-10-15)
+
+### 🐛 Bug Fixes
+
+* keep pairip VM startup program running, no-op only license flow sinks ([2546c5d](https://github.com/CappyT/cappys-patches/commit/2546c5db323c24266bd7148b661446af24abb1fc))
+
 ## [1.1.2](https://github.com/CappyT/cappys-patches/compare/v1.1.1...v1.1.2) (2026-10-15)
 
 ### 🐛 Bug Fixes
