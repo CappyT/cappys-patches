@@ -14,10 +14,10 @@
    "replace": "0751656b190173000000000000000000000000"
   },
   {
-   "name": "rightsGate",
-   "offset": 11765602,
-   "expected": "161617109315b0081644151703ae",
-   "replace": "9515951595159515951595159515"
+   "name": "attestPopup",
+   "offset": 8107988,
+   "expected": "93018900003402003b0202064403020044d70e3703a2016f0103020001ae0c100502100400730132037601",
+   "replace": "93007600930076009300760093007600930076009300760093007600930076009300760093007600930076"
   },
   {
    "name": "thunkFlag0",
@@ -60,6 +60,24 @@
    "offset": 11766077,
    "expected": "131818132718b21627161b19109318b0091b4518190cf1841a271518",
    "replace": "95279527952795279527952795279527952795279527952795279527"
+  },
+  {
+   "name": "rightsGate",
+   "offset": 11765602,
+   "expected": "161617109315b0081644151703ae",
+   "replace": "9515951595159515951595159515"
+  }
+ ],
+ "strings": [
+  {
+   "name": "sentryDsnAndroid",
+   "find": "https://8e29be9cea2443f4a5792a4fa07fef3f@sentry10.ultimate-guitar.com/10",
+   "replace": "xxxxx://8e29be9cea2443f4a5792a4fa07fef3f@sentry10.ultimate-guitar.com/10"
+  },
+  {
+   "name": "appsflyerDevKey",
+   "find": "7uQqGQLNsBQmwgYzfKQcfg",
+   "replace": "!!!!GQLNsBQmwgYzfKQcfg"
   }
  ]
 }

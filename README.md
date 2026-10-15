@@ -18,7 +18,9 @@ Unofficial [Morphe](https://github.com/MorpheApp) patch bundle for the **MuseSco
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
-| [Unlock Pro](#unlock-pro) | Unlocks MuseScore Pro / Off-Scores entitlements locally by patching the React Native Hermes bundle (paywalls, offline scores gating, feature flags). |  |
+| [Unlock Pro](#unlock-pro) | Unlocks MuseScore Pro / Off-Scores entitlements locally by patching the React Native Hermes bundle (paywalls, offline scores gating, feature flags). Also hides the device-compatibility attestation popup. |  |
+| [Fix Google Play detection](#fix-google-play-detection) | Disables pairipcore's license and signature checks that complain the app was not installed from Google Play and shut it down. |  |
+| [Disable tracking](#disable-tracking) | Disables Sentry crash reporting, AppsFlyer attribution and Firebase Analytics collection. |  |
 
 </details>
 
@@ -28,7 +30,9 @@ Unofficial [Morphe](https://github.com/MorpheApp) patch bundle for the **MuseSco
 
 | Patch | Description |
 |---|---|
-| **Unlock Pro** | Unlocks MuseScore Pro / Off-Scores entitlements locally by patching the React Native Hermes bundle (`assets/index.android.bundle`): the access-rights sync always grants Pro flags, so paywalls, offline-scores gating, transposition/parts gates and feature flags open up. Byte-verified in-place rewrites + Hermes SHA-1 trailer recomputed. |
+| **Unlock Pro** | Unlocks MuseScore Pro / Off-Scores entitlements locally by patching the React Native Hermes bundle (`assets/index.android.bundle`): the access-rights sync always grants Pro flags, so paywalls, offline-scores gating, transposition/parts gates and feature flags open up. Byte-verified in-place rewrites + Hermes SHA-1 trailer recomputed. Also no-ops `showAndroidIntegrityErrorPopup` (the "we're having trouble verifying your device…" popup shown when opening scores from a re-signed install). |
+| **Fix Google Play detection** | MuseScore ships Google's pairipcore SDK (`com.pairip.*`), whose application wrapper runs a signature check (throws on re-signed APKs) and a license check (binds to the Play licensing service, verifies the app was installed from `com.android.vending`, and on failure shows the *"Check that Google Play is enabled on your device…"* dialog and schedules an app shutdown after 30 seconds). Both entry points are no-oped; the pairip VM protection is left running. |
+| **Disable tracking** | Kills third-party telemetry at its source: the hardcoded Sentry DSN and the AppsFlyer devKey inside the Hermes string table are corrupted (invalid scheme / invalid key → SDKs disable themselves instead of reporting), and Firebase Analytics / Crashlytics / ADID collection is switched off via manifest flags. |
 
 ## 🎯 Compatibility
 
@@ -36,8 +40,9 @@ Unofficial [Morphe](https://github.com/MorpheApp) patch bundle for the **MuseSco
 |---|---|---|
 | MuseScore: Music Chords & Tabs | `com.musescore.playerlite` | **2.14.48** (versionCode 2701674, APKMirror universal `.apkm`) |
 
-The Unlock Pro patch carries a full SHA-256 integrity check of the bundle and **fails loudly** on
-any other build — the Hermes bytecode offsets are version-specific.
+The Unlock Pro patch verifies the bundle SHA-256 and **warns** on any other build — the per-region
+expected-bytes verification then decides whether the Hermes offsets still apply (they are
+version-specific and will fail loudly on a mismatching build).
 
 ## 🔧 How it works (for patch authors)
 
