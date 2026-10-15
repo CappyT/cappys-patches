@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/CappyT/cappys-patches/compare/v1.1.0...v1.1.1) (2026-10-15)
+
+### 🐛 Bug Fixes
+
+* exhaustively disable pairipcore license paywall and degrade gracefully on other app versions ([870b999](https://github.com/CappyT/cappys-patches/commit/870b9990f0a000ecac33958b982e1b6f501de452))
+
 ## [1.1.0](https://github.com/CappyT/cappys-patches/compare/v1.0.0...v1.1.0) (2026-10-15)
 
 ### ✨ New Features
