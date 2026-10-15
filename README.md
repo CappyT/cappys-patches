@@ -6,9 +6,9 @@ Unofficial [Morphe](https://github.com/MorpheApp) patch bundle for the **MuseSco
 <!-- 🩹 Patches list -->
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.0.0](https://github.com/CappyT/cappys-patches/releases/tag/v1.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;1 patches total
+> **[v1.1.0](https://github.com/CappyT/cappys-patches/releases/tag/v1.1.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;3 patches total
 <details open>
-<summary>📦 MuseScore: Music Chords & Tabs&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<summary>📦 MuseScore: Music Chords & Tabs&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -18,9 +18,18 @@ Unofficial [Morphe](https://github.com/MorpheApp) patch bundle for the **MuseSco
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
-| [Unlock Pro](#unlock-pro) | Unlocks MuseScore Pro / Off-Scores entitlements locally by patching the React Native Hermes bundle (paywalls, offline scores gating, feature flags). Also hides the device-compatibility attestation popup. |  |
-| [Fix Google Play detection](#fix-google-play-detection) | Disables pairipcore's license and signature checks that complain the app was not installed from Google Play and shut it down. |  |
 | [Disable tracking](#disable-tracking) | Disables Sentry crash reporting, AppsFlyer attribution and Firebase Analytics collection. |  |
+| [Fix Google Play detection](#fix-google-play-detection) | Disables pairipcore's license and signature checks that complain the app was not installed from Google Play and shut it down. |  |
+
+</details>
+
+<details open>
+<summary>🌐 Universal&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Unlock Pro](#unlock-pro) | Unlocks MuseScore Pro / Off-Scores entitlements by patching the React Native Hermes bundle (paywalls, offline scores gating, feature flags). Also hides the device-compatibility attestation popup shown when opening scores. |  |
 
 </details>
 
