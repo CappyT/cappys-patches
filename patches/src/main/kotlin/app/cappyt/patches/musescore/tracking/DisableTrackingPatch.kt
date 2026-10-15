@@ -57,22 +57,36 @@ val disableTrackingPatch = resourcePatch(
         val bundle = get(BUNDLE_PATH)
         val data = bundle.readBytes()
 
-        for (entry in HERMES_STRING_PATCHES) {
-            val positions = indexOfAll(data, entry.find)
-            if (positions.size != 1) {
-                throw PatchException(
-                    "${entry.name}: expected exactly 1 occurrence of the target string, " +
-                            "found ${positions.size}"
-                )
+        var stringsApplied = false
+        try {
+            for (entry in HERMES_STRING_PATCHES) {
+                val positions = indexOfAll(data, entry.find)
+                if (positions.size != 1) {
+                    throw PatchException(
+                        "${entry.name}: expected exactly 1 occurrence of the target string, " +
+                                "found ${positions.size}"
+                    )
+                }
+                entry.replace.copyInto(data, positions[0])
             }
-            entry.replace.copyInto(data, positions[0])
+            stringsApplied = true
+        } catch (e: PatchException) {
+            // The string kills are verified against the 2.14.48 bundle; on any other build the
+            // strings may differ. Skip them instead of failing the session (the manifest flags
+            // below are version-independent and still apply).
+            println(
+                "WARNING: Disable tracking skipped its Hermes string kills - ${e.message}. " +
+                        "Regenerate the tables for this build."
+            )
         }
 
-        // Recompute the Hermes SHA-1 trailer (last 20 bytes = SHA-1 of everything before them).
-        val sha1 = MessageDigest.getInstance("SHA-1")
-            .digest(data.copyOfRange(0, data.size - SHA1_TRAILER_SIZE))
-        sha1.copyInto(data, data.size - SHA1_TRAILER_SIZE)
-        bundle.writeBytes(data)
+        if (stringsApplied) {
+            // Recompute the Hermes SHA-1 trailer (last 20 bytes = SHA-1 of everything before).
+            val sha1 = MessageDigest.getInstance("SHA-1")
+                .digest(data.copyOfRange(0, data.size - SHA1_TRAILER_SIZE))
+            sha1.copyInto(data, data.size - SHA1_TRAILER_SIZE)
+            bundle.writeBytes(data)
+        }
 
         // Firebase / Sentry collection flags in the merged manifest.
         document("AndroidManifest.xml").use { document ->

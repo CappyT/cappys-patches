@@ -64,29 +64,49 @@ val unlockMuseScoreProPatch = resourcePatch(
             )
         }
 
-        for (entry in HERMES_PATCHES) {
-            val offset = entry.offset.toInt()
-            val end = offset + entry.expected.size
+        try {
+            applyHermesRegions(data)
 
-            if (end > data.size) {
-                throw PatchException("${entry.name}: range end $end exceeds bundle size")
-            }
-            for (i in entry.expected.indices) {
-                if (data[offset + i] != entry.expected[i]) {
-                    throw PatchException(
-                        "${entry.name}: byte mismatch at 0x" + hex(data[offset + i]) +
-                                " (expected 0x" + hex(entry.expected[i]) + ")"
-                    )
-                }
-            }
-            entry.replace.copyInto(data, offset)
+            // Recompute the Hermes SHA-1 trailer (last 20 bytes = SHA-1 of everything before).
+            val sha1 = MessageDigest.getInstance("SHA-1")
+                .digest(data.copyOfRange(0, data.size - SHA1_TRAILER_SIZE))
+            sha1.copyInto(data, data.size - SHA1_TRAILER_SIZE)
+
+            file.writeBytes(data)
+        } catch (e: PatchException) {
+            // The tables are version-specific: on any other build the expected bytes no longer
+            // match. Skip the Hermes unlock instead of failing the whole patching session - the
+            // version-independent patches (pairip / manifest flags) still apply.
+            println(
+                "WARNING: Unlock Pro skipped - ${e.message}. The Hermes patch tables target " +
+                        "MuseScore 2.14.48 (versionCode 2701674); regenerate them for this build."
+            )
         }
+    }
+}
 
-        // Recompute the Hermes SHA-1 trailer (last 20 bytes = SHA-1 of everything before them).
-        val sha1 = MessageDigest.getInstance("SHA-1").digest(data.copyOfRange(0, data.size - SHA1_TRAILER_SIZE))
-        sha1.copyInto(data, data.size - SHA1_TRAILER_SIZE)
+/**
+ * Verifies and applies every region all-or-nothing: if any expected byte mismatches, a
+ * [PatchException] is thrown BEFORE anything is written, so a version-drifted bundle is
+ * never partially rewritten.
+ */
+private fun applyHermesRegions(data: ByteArray) {
+    for (entry in HERMES_PATCHES) {
+        val offset = entry.offset.toInt()
+        val end = offset + entry.expected.size
 
-        file.writeBytes(data)
+        if (end > data.size) {
+            throw PatchException("${entry.name}: range end $end exceeds bundle size")
+        }
+        for (i in entry.expected.indices) {
+            if (data[offset + i] != entry.expected[i]) {
+                throw PatchException(
+                    "${entry.name}: byte mismatch at 0x" + hex(data[offset + i]) +
+                            " (expected 0x" + hex(entry.expected[i]) + ")"
+                )
+            }
+        }
+        entry.replace.copyInto(data, offset)
     }
 }
 
